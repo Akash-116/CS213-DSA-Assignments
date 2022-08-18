@@ -1,0 +1,31 @@
+Some hints for the assignment 4 problems are given below. There may be other ways of solving them.
+
+{EASY_DONE} 1. This is easy. Just choose enough edges to ensure a path from 0 to every vertex and from every vertex to 0. Need n-1 for each so at most 2n-2 in total. The challenge is to try to use as many common edges as possible to minimize the total but no efficient way known for this.
+
+2. First identify all non-tree edges in a dfs that are critical. If deleting an edge still gives Low[v] < v for every node other than root, the graph will remain strongly-connected. So removing a non-tree critical edge must give low[v] = v for some v.  A tree edge is critical if there is no other path from parent to child.  How to identify this? You can do more than one traversal of the graph (or its reverse). This problem is more difficult, do it last.
+
+
+
+3. This is a simpler case of problem 2. Suppose (i,j) and (j,i) are both edges. Then one of them must be a forward or tree edge and the other a back edge in any dfs. A forward edge can always be deleted without affecting strong connectivity. The only remaining case is when one is a tree edge and the other a back edge to the parent. If possible delete the back edge otherwise delete the tree edge. 
+There is a specific case when deleting any one will destroy strong connectivity. When will that happen? In that case the required subgraph does not exist.
+
+
+
+{DEBUGKARO _DONE!!}4. Nodes in the same strongly connected component are all reachable from each other, so can be considered to be equivalent.  Collapse all strong components to single nodes and only add edges between components. After this, we are left with a directed acyclic graph. Any such graph must have some nodes of outdegree 0 and some of indegree 0. To make it strongly connected, at least one outgoing edge must be added from a node of outdegree 0 and at least one incoming edge to a node of indegree 0. Does this give a bound on the number of edges? Can it always be achieved?
+
+
+
+Geeks for geeks explanation as no cross edges, but cross edges possible!!! Forward edges also possible...CORRECT THEM LATER. (In tarjan algo, for directed graphs  {WIKIPEDIA IS AWESOME}
+
+
+
+
+
+
+Q3. Take the given directed graph, and construct a undirected graph from it. even uni-directed egde is shown as a edge in undirected graph, so, undirected graph has more FREEDOM. 
+
+Check whether undirected graph has bridges. If yes, then its not possible to hav a spanning oriented subgraph. (https://cp-algorithms.com/graph/strong-orientation.html) "Robbins' theorem".
+
+"The result that bridgeless connected (Undirected) graphs are exactly the (Undirected) graphs that have strong orientations is called Robbins' theorem." YAaaazzzzzz!
+
+Bcoz, the spanning oriented subgraph is supposed to be a 'Strong Orientation' of the Undirected graph. But,  
